@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() async{
-    print("Hi Mom");
-    print(await getFutureString());
-    print("Goodbyew");
+void main() async {
+  runApp(
+      MaterialApp(
+          home: Scaffold(
+            body: Center(child: Text("Hello Mother"))
+          )
+      ));
 }
-
-Future<String> getFutureString() {
-  return Future.delayed(Duration(seconds: 2), (){
-    return "You left";
-  });
-}
-
-
