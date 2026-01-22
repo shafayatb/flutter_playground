@@ -4,28 +4,72 @@ void main() async {
   runApp(MainWidget());
 }
 
-class MainWidget extends StatelessWidget {
+class MainWidget extends StatefulWidget {
   const MainWidget({super.key});
+
+  @override
+  State<MainWidget> createState() => _MainWidgetState();
+}
+
+class _MainWidgetState extends State<MainWidget> {
+  TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Image.network(
-            "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp",
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: _controller,
+                  onChanged: (value) {
+                    print(value);
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Hint",
+                    labelText: "Label",
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red, width: 4),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red, width: 4),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    print(_controller.text);
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 100,
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ],
+            ),
           ),
-          /*Image.asset(
-            'assets/axe 1.png',
-            width: 200,
-            height: 200,
-            fit: BoxFit.contain,
-          ),*/
         ),
       ),
     );
   }
 }
+
+//Image
+
+/*Image.network(
+"https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp",
+),
+Image.asset(
+'assets/axe 1.png',
+width: 200,
+height: 200,
+fit: BoxFit.contain,
+),*/
 
 class CustomStackWidget extends StatefulWidget {
   const CustomStackWidget({super.key});
