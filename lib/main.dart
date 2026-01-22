@@ -11,19 +11,29 @@ class MainWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
           home: Scaffold(
-              body: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 100,
-                    color: Colors.green,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 150,
+                        color: Colors.red,
+                      ),
+                      Container(
+                        width: 100,
+                        height: 150,
+                        color: Colors.blueAccent,
+                      )
+                    ],
                   ),
-                  Text("Harro"),
                   Container(
-                    width: 100,
-                    color: Colors.red,
-                  ),
+                    width: 200,
+                    height: 150,
+                    color: Colors.greenAccent,
+                  )
                 ],
               )
           )
