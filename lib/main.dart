@@ -5,6 +5,8 @@ void main() async {
 }
 
 class MainWidget extends StatelessWidget {
+  const MainWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,9 +31,19 @@ class _CustomTextWidgetState extends State<CustomTextWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 40, color: Colors.amber),
+      child: Container(
+        width: 300,
+        height: 300,
+        decoration: BoxDecoration(
+          color: Colors.blueAccent,
+          shape: BoxShape.circle
+        ),
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(20),
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 40, color: Colors.amber),
+        ),
       ),
       onTap: (){
         print("Tapped");
