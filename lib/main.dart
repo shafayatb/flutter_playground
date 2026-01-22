@@ -11,18 +11,17 @@ class MainWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
           home: Scaffold(
-              body: Column(
+              body: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     width: 100,
-                    height: 200,
                     color: Colors.green,
                   ),
                   Text("Harro"),
                   Container(
-                    height: 200,
+                    width: 100,
                     color: Colors.red,
                   ),
                 ],
