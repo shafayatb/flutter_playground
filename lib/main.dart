@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -9,7 +11,7 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: CustomFlexibleWidget()));
+    return Scaffold(body: Center(child: CustomListView()));
   }
 }
 
@@ -43,6 +45,57 @@ height: 200,
 fit: BoxFit.contain,
 ),*/
 
+class CustomListView extends StatefulWidget {
+  const CustomListView({super.key});
+
+  @override
+  State<CustomListView> createState() => _CustomListViewState();
+}
+
+class _CustomListViewState extends State<CustomListView> {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ListView.builder(
+            itemBuilder: (BuildContext context, int index) {
+              int red = index * 77 % 256;
+              int green = index * 66 % 256;
+              int blue = index * 88 % 256;
+              return Container(
+                  height: 200,
+                color: Color.fromARGB(255, red, green, blue),
+              );
+            },
+            itemCount: Random().nextInt(100),
+            shrinkWrap: true,
+            primary: false,
+          ),
+        ],
+      ),
+    );
+
+    /* Basic ListView
+      ListView(
+      children: [
+        Container(
+          height: 400,
+          color: Colors.blueAccent,
+        ),
+        Container(
+          height: 400,
+          color: Colors.amberAccent,
+        ),
+        Container(
+          height: 400,
+          color: Colors.indigo,
+        ),
+      ],
+    );*/
+  }
+}
+
 class CustomFlexibleWidget extends StatefulWidget {
   const CustomFlexibleWidget({super.key});
 
@@ -58,7 +111,7 @@ class _CustomFlexibleWidgetState extends State<CustomFlexibleWidget> {
         children: [
           Flexible(child: Container(color: Colors.deepOrange)),
           Flexible(child: Container(color: Colors.deepPurpleAccent)),
-          Flexible(child: Container(height:100, color: Colors.redAccent)),
+          Flexible(child: Container(height: 100, color: Colors.redAccent)),
         ],
       ),
     );
@@ -78,9 +131,9 @@ class _CustomExpandedWidgetState extends State<CustomExpandedWidget> {
     return Scaffold(
       body: Column(
         children: [
-          Expanded(flex:1, child: Container(color: Colors.deepOrange)),
-          Expanded(flex:2, child: Container(color: Colors.deepPurpleAccent)),
-          Expanded(flex:3, child: Container(color: Colors.redAccent)),
+          Expanded(flex: 1, child: Container(color: Colors.deepOrange)),
+          Expanded(flex: 2, child: Container(color: Colors.deepPurpleAccent)),
+          Expanded(flex: 3, child: Container(color: Colors.redAccent)),
         ],
       ),
     );
