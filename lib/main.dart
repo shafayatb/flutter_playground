@@ -18,7 +18,27 @@ class _MainWidgetState extends State<MainWidget> {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: ,
+          child: ElevatedButton(
+            onPressed: () {
+              print("Oh that hit the spot");
+            },
+            child: Text("Press Me"),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFFDFB25D),
+              foregroundColor: Color(0xFFB50853),
+              padding: EdgeInsets.symmetric(
+                horizontal: 40,
+                vertical: 10
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(
+                  width: 1,
+                  color: Colors.deepOrange
+                )
+              )
+            ),
+          ),
         ),
       ),
     );
@@ -46,6 +66,7 @@ class CustomEditText extends StatefulWidget {
 
 class _CustomEditTextState extends State<CustomEditText> {
   TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
