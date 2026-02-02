@@ -58,23 +58,42 @@ class _CustomListViewState extends State<CustomListView> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ListView.builder(
+          ListView.separated(
             itemBuilder: (BuildContext context, int index) {
               int red = index * 77 % 256;
               int green = index * 66 % 256;
               int blue = index * 88 % 256;
               return Container(
-                  height: 200,
+                height: 200,
                 color: Color.fromARGB(255, red, green, blue),
               );
             },
-            itemCount: Random().nextInt(100),
             shrinkWrap: true,
             primary: false,
+            separatorBuilder: (BuildContext context, int index) {
+              return Container(height: 20, color: Colors.grey);
+            },
+            itemCount: Random().nextInt(100),
           ),
         ],
       ),
     );
+
+    /* ListView Builder
+    ListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        int red = index * 77 % 256;
+        int green = index * 66 % 256;
+        int blue = index * 88 % 256;
+        return Container(
+          height: 200,
+          color: Color.fromARGB(255, red, green, blue),
+        );
+      },
+      itemCount: Random().nextInt(100),
+      shrinkWrap: true,
+      primary: false,
+    ),*/
 
     /* Basic ListView
       ListView(
