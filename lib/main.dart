@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
 
 void main() async {
-  runApp(MainWidget());
+  runApp(MaterialApp(home: FirstScreen()));
 }
 
-class MainWidget extends StatefulWidget {
-  const MainWidget({super.key});
-
-  @override
-  State<MainWidget> createState() => _MainWidgetState();
-}
-
-class _MainWidgetState extends State<MainWidget> {
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: CustomButton(),
+    return Scaffold(body: Center(child: CustomButton()));
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Text("Secondo"),
         ),
       ),
     );
@@ -46,6 +52,7 @@ class CustomButton extends StatefulWidget {
 
 class _CustomButtonState extends State<CustomButton> {
   String buttonText = 'Press Me';
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -54,27 +61,27 @@ class _CustomButtonState extends State<CustomButton> {
         setState(() {
           buttonText = 'Oh Yaas';
         });
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext builderContext) {
+              return SecondScreen();
+            },
+          ),
+        );
       },
       style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFFDFB25D),
-          foregroundColor: Color(0xFFB50853),
-          padding: EdgeInsets.symmetric(
-              horizontal: 40,
-              vertical: 10
-          ),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-              side: BorderSide(
-                  width: 1,
-                  color: Colors.deepOrange
-              )
-          )
+        backgroundColor: Color(0xFFDFB25D),
+        foregroundColor: Color(0xFFB50853),
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(width: 1, color: Colors.deepOrange),
+        ),
       ),
       child: Text(buttonText),
     );
   }
 }
-
 
 class CustomEditText extends StatefulWidget {
   const CustomEditText({super.key});
@@ -113,18 +120,13 @@ class _CustomEditTextState extends State<CustomEditText> {
             onTap: () {
               print(_controller.text);
             },
-            child: Container(
-              width: 150,
-              height: 100,
-              color: Colors.blueAccent,
-            ),
+            child: Container(width: 150, height: 100, color: Colors.blueAccent),
           ),
         ],
       ),
     );
   }
 }
-
 
 class CustomStackWidget extends StatefulWidget {
   const CustomStackWidget({super.key});
