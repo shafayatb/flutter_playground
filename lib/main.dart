@@ -11,7 +11,7 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: CustomGridView()));
+    return Scaffold(body: Center(child: CustomWidgetList()));
   }
 }
 
@@ -44,6 +44,62 @@ width: 200,
 height: 200,
 fit: BoxFit.contain,
 ),*/
+
+class CustomWidgetList extends StatefulWidget {
+  const CustomWidgetList({super.key});
+
+  @override
+  State<CustomWidgetList> createState() => _CustomWidgetListState();
+}
+
+class _CustomWidgetListState extends State<CustomWidgetList> {
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> widgets = [
+      Container(
+        width: 100,
+        height: 100,
+        color: Colors.deepPurple,
+      ),
+      Container(
+        width: 80,
+        height: 70,
+        color: Colors.deepOrangeAccent,
+      ),
+      Container(
+        width: 120,
+        height: 130,
+        color: Colors.blue,
+      ),
+    ];
+    return Column(
+      children: [
+        Container(
+          width: 80,
+          height: 70,
+          color: Colors.deepOrangeAccent,
+        ),
+        Container(
+          width: 120,
+          height: 130,
+          color: Colors.blue,
+        ),
+        ...widgets,
+        Container(
+          width: 80,
+          height: 70,
+          color: Colors.deepOrangeAccent,
+        ),
+        Container(
+          width: 120,
+          height: 130,
+          color: Colors.blue,
+        ),
+      ]
+    );
+  }
+}
+
 
 class CustomGridView extends StatefulWidget {
   const CustomGridView({super.key});
