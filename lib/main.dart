@@ -11,7 +11,32 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: CustomIconWidget()));
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Playground'),
+          leading: Icon(Icons.home),
+          actions: [
+            IconButton(
+                icon: Icon(Icons.search),
+              onPressed: (){
+                  print('Serach');
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.edit_attributes_rounded),
+              onPressed: (){
+                print('Edit');
+              },
+            )
+          ],
+          backgroundColor: Colors.deepOrangeAccent,
+          foregroundColor: Colors.white,
+          elevation: 8,
+          shadowColor: Colors.grey,
+          centerTitle: true,
+        ),
+        body: Center(child: CustomIconWidget())
+    );
   }
 }
 
