@@ -11,7 +11,7 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: CustomWidgetList()));
+    return Scaffold(body: Center(child: CustomIconWidget()));
   }
 }
 
@@ -44,6 +44,20 @@ width: 200,
 height: 200,
 fit: BoxFit.contain,
 ),*/
+
+class CustomIconWidget extends StatefulWidget {
+  const CustomIconWidget({super.key});
+
+  @override
+  State<CustomIconWidget> createState() => _CustomIconWidgetState();
+}
+
+class _CustomIconWidgetState extends State<CustomIconWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Icon(Icons.upcoming, size: 200, color: Colors.deepOrange);
+  }
+}
 
 class CustomWidgetList extends StatefulWidget {
   const CustomWidgetList({super.key});
@@ -82,22 +96,13 @@ class _CustomWidgetListState extends State<CustomWidgetList> {
     ];*/
     return Column(
       children: [
-        Container(
-          width: 80,
-          height: 70,
-          color: Colors.deepOrangeAccent,
-        ),
-        Container(
-          width: 120,
-          height: 130,
-          color: Colors.blue,
-        ),
-        ...widgets
-      ]
+        Container(width: 80, height: 70, color: Colors.deepOrangeAccent),
+        Container(width: 120, height: 130, color: Colors.blue),
+        ...widgets,
+      ],
     );
   }
 }
-
 
 class CustomGridView extends StatefulWidget {
   const CustomGridView({super.key});
