@@ -12,30 +12,48 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter Playground'),
-          leading: Icon(Icons.home),
-          actions: [
-            IconButton(
-                icon: Icon(Icons.search),
-              onPressed: (){
-                  print('Serach');
-              },
+      appBar: AppBar(
+        title: Text('Flutter Playground'),
+        //leading: Icon(Icons.home),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('Serach');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.edit_attributes_rounded),
+            onPressed: () {
+              print('Edit');
+            },
+          ),
+        ],
+        backgroundColor: Colors.deepOrangeAccent,
+        foregroundColor: Colors.white,
+        elevation: 8,
+        shadowColor: Colors.grey,
+        centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.redAccent),
+              child: Text(
+                'Fulter',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
-            IconButton(
-              icon: Icon(Icons.edit_attributes_rounded),
-              onPressed: (){
-                print('Edit');
-              },
-            )
+            ListTile(title: Text('Home'), trailing: Icon(Icons.home)),
           ],
-          backgroundColor: Colors.deepOrangeAccent,
-          foregroundColor: Colors.white,
-          elevation: 8,
-          shadowColor: Colors.grey,
-          centerTitle: true,
         ),
-        body: Center(child: CustomIconWidget())
+      ),
+      body: Center(child: CustomIconWidget()),
     );
   }
 }
@@ -80,7 +98,12 @@ class CustomIconWidget extends StatefulWidget {
 class _CustomIconWidgetState extends State<CustomIconWidget> {
   @override
   Widget build(BuildContext context) {
-    return Icon(Icons.upcoming, size: 200, color: Colors.deepOrange);
+    return InkWell(
+      onTap: () {
+        Scaffold.of(context).openDrawer();
+      },
+      child: Icon(Icons.upcoming, size: 200, color: Colors.deepOrange),
+    );
   }
 }
 
