@@ -79,12 +79,8 @@ class _FirstScreenState extends State<FirstScreen> {
         //showUnselectedLabels: false,
         selectedFontSize: 20,
         unselectedFontSize: 14,
-        selectedIconTheme: IconThemeData(
-          size: 30
-        ),
-        unselectedIconTheme: IconThemeData(
-            size: 20
-        ),
+        selectedIconTheme: IconThemeData(size: 30),
+        unselectedIconTheme: IconThemeData(size: 20),
       ),
       body: _pages[currentIndex],
     );
@@ -116,7 +112,31 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.lightBlue,
-      child: Center(child: Text("Home Page")),
+      child: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Warning'),
+                  content: Text('Data Breach'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Destroy Data'),
+                    ),
+                  ],
+                  icon: Icon(Icons.warning),
+                );
+              },
+            );
+          },
+          child: Text("Home Page"),
+        ),
+      ),
     );
   }
 }
