@@ -6,8 +6,15 @@ void main() async {
   runApp(MaterialApp(home: FirstScreen()));
 }
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+class FirstScreen extends StatefulWidget {
+  @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  List<Widget> _pages = [HomePage(), ProfilePage()];
+
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +60,19 @@ class FirstScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(child: CustomIconWidget()),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+        onTap: (int index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        currentIndex: currentIndex,
+      ),
+      body: _pages[currentIndex],
     );
   }
 }
@@ -72,6 +91,30 @@ class SecondScreen extends StatelessWidget {
           child: Text("Secondo"),
         ),
       ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.lightBlue,
+      child: Center(child: Text("Home Page")),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.redAccent,
+      child: Center(child: Text("Profile Page")),
     );
   }
 }
