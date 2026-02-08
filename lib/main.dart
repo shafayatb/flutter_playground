@@ -71,6 +71,20 @@ class _FirstScreenState extends State<FirstScreen> {
           });
         },
         currentIndex: currentIndex,
+        //type: BottomNavigationBarType.shifting,
+        selectedItemColor: Colors.deepOrangeAccent,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.indigo,
+        //showSelectedLabels: false,
+        //showUnselectedLabels: false,
+        selectedFontSize: 20,
+        unselectedFontSize: 14,
+        selectedIconTheme: IconThemeData(
+          size: 30
+        ),
+        unselectedIconTheme: IconThemeData(
+            size: 20
+        ),
       ),
       body: _pages[currentIndex],
     );
