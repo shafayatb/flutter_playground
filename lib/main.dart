@@ -118,7 +118,18 @@ class HomePage extends StatelessWidget {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return AlertDialog(
+                return SimpleDialog(
+                  title: Text('Home'),
+                  children: [
+                    SimpleDialogOption(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('On Home Page'),
+                    ),
+                  ],
+                );
+                /* AlertDialog(
                   title: Text('Warning'),
                   content: Text('Data Breach'),
                   actions: [
@@ -130,8 +141,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                   icon: Icon(Icons.warning),
-                );
+                );*/
               },
+              barrierDismissible: false
             );
           },
           child: Text("Home Page"),
