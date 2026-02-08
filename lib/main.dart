@@ -143,7 +143,7 @@ class HomePage extends StatelessWidget {
                   icon: Icon(Icons.warning),
                 );*/
               },
-              barrierDismissible: false
+              barrierDismissible: false,
             );
           },
           child: Text("Home Page"),
@@ -160,7 +160,37 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.redAccent,
-      child: Center(child: Text("Profile Page")),
+      child: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  height: 250,
+                  decoration: BoxDecoration(
+                    color: Colors.greenAccent,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Change Name',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        fontSize: 30,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          child: const Text('More Profile Options'),
+        ),
+      ),
     );
   }
 }
