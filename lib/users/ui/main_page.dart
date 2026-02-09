@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/users/UserModel.dart';
 import 'package:flutter_playground/users/UsersRepository.dart';
-import 'package:flutter_playground/users/ui/CreateUserDialog.dart';
+import 'package:flutter_playground/users/ui/create_user_dialog.dart';
+import 'package:flutter_playground/users/ui/user_item.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   MainPage({super.key});
 
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
   UsersRepository usersRepository = UsersRepository();
 
   @override
@@ -23,6 +29,9 @@ class MainPage extends StatelessWidget {
                   return CreateUserDialog(
                     onSubmit: (UserModel user) async {
                       await usersRepository.createUser(user);
+                      setState(() {
+
+                      });
                     },
                   );
                 },
@@ -41,7 +50,13 @@ class MainPage extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            return Center(child: Text("${snapshot.data!.length} items"));
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                UserModel user = snapshot.data![index];
+                return UserItem(userModel: user);
+              },
+              itemCount: snapshot.data!.length,
+            );
           }
           return Center(child: Text("${snapshot.error}"));
         },
