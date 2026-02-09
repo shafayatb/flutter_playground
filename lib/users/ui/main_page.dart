@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/users/UserModel.dart';
 import 'package:flutter_playground/users/UsersRepository.dart';
+import 'package:flutter_playground/users/ui/CreateUserDialog.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({super.key});
@@ -12,7 +14,24 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('User App'),
         titleTextStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return CreateUserDialog(
+                    onSubmit: (UserModel user) async {
+                      await usersRepository.createUser(user);
+                    },
+                  );
+                },
+              );
+            },
+            icon: Icon(Icons.add),
+            color: Colors.white,
+          ),
+        ],
         backgroundColor: Colors.blueGrey,
       ),
       body: FutureBuilder(
