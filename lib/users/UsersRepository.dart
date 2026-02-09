@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_playground/UserModel.dart';
+import 'package:flutter_playground/users/UserModel.dart';
 import 'package:http/http.dart' as http;
 
 class UsersRepository {
@@ -13,7 +13,7 @@ class UsersRepository {
       return [];
     }
 
-    return (res.body as List).map((element) {
+    return (jsonDecode(res.body) as List).map((element) {
       return UserModel.fromJson(element);
     }).toList();
   }
