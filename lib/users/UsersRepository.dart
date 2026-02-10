@@ -22,9 +22,7 @@ class UsersRepository {
     String userJson = jsonEncode(user.toJson());
     await http.post(
       Uri.parse('https://69896944c04d974bc69f1fbd.mockapi.io/api/v1/users'),
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: {'Content-Type': 'application/json'},
       body: userJson,
     );
   }

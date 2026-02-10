@@ -29,9 +29,7 @@ class _MainPageState extends State<MainPage> {
                   return CreateUserDialog(
                     onSubmit: (UserModel user) async {
                       await usersRepository.createUser(user);
-                      setState(() {
-
-                      });
+                      setState(() {});
                     },
                   );
                 },

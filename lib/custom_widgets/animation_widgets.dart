@@ -40,4 +40,3 @@ class _CustomAnimatedContainerState extends State<CustomAnimatedContainer> {
     );
   }
 }
-

@@ -1,10 +1,14 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+
 import 'post_model.dart';
 
 class PostRepository {
   Future<List<Post>> fetchPosts() async {
-    http.Response res = await http.get(Uri.parse('https://dummyjson.com/posts'));
+    http.Response res = await http.get(
+      Uri.parse('https://dummyjson.com/posts'),
+    );
 
     final Map<String, dynamic> data = jsonDecode(res.body);
 
