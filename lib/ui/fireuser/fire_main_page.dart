@@ -16,6 +16,27 @@ class _FireMainPageState extends State<FireMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Users')),
+      body: StreamBuilder(
+        stream: fireUserRepository.getUsers(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.connectionState == ConnectionState.active) {
+            var users = snapshot.data ?? [];
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text('${users[index].name}'),
+                  subtitle: Text('${users[index].age} years old'),
+                );
+              },
+              itemCount: users.length,
+            );
+          }
+          return Center(child: Text('No Users Yet'));
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
