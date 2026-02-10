@@ -1,10 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  String? username = await getUsername();
-  print(username);
+  await Firebase.initializeApp(
+
+    options: DefaultFirebaseOptions.currentPlatform,
+
+  );
 }
 
 Future<void> saveUsername(String username) async {
