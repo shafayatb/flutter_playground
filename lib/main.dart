@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
-
-import 'custom_widgets/animation_example.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  runApp(const AnimationExample());
+  WidgetsFlutterBinding.ensureInitialized();
+  String? username = await getUsername();
+  print(username);
+}
+
+Future<void> saveUsername(String username) async {
+  var prefs = await SharedPreferences.getInstance();
+  await prefs.setString('user_name', username);
+}
+
+Future<String?> getUsername() async {
+  var prefs = await SharedPreferences.getInstance();
+  return prefs.getString('user_name');
 }
