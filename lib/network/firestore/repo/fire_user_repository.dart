@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_playground/network/firestore/user/fire_user_model.dart';
+import 'package:flutter_playground/network/firestore/fireuser/fire_user_model.dart';
 
 class FireUserRepository {
   FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
